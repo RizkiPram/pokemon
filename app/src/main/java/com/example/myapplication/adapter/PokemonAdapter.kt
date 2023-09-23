@@ -3,14 +3,15 @@ package com.example.myapplication.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.data.local.entity.PokemonEntity
 import com.example.myapplication.databinding.PokemonItemBinding
-import com.example.myapplication.response.ResultsItem
+import com.example.myapplication.data.remote.response.ResultsItem
 
-class PokemonAdapter(private val list:ArrayList<ResultsItem>):
+class PokemonAdapter(private val list:ArrayList<PokemonEntity>):
     RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
     private var onItemClickCallback: OnItemClickCallback? = null
     inner class ViewHolder(private var binding:PokemonItemBinding):RecyclerView.ViewHolder(binding.root){
-        fun itemBind(data: ResultsItem){
+        fun itemBind(data: PokemonEntity){
             binding.apply {
                 root.setOnClickListener { onItemClickCallback?.onItemClicked(data) }
                 pokemonName.text=data.name
@@ -37,7 +38,7 @@ class PokemonAdapter(private val list:ArrayList<ResultsItem>):
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: ResultsItem)
+        fun onItemClicked(data: PokemonEntity)
     }
 
 }

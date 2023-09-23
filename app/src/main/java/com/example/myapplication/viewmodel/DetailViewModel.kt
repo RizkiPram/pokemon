@@ -1,13 +1,14 @@
 package com.example.myapplication.viewmodel
 
+import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.myapplication.api.ApiConfig
-import com.example.myapplication.response.AbilitiesItem
-import com.example.myapplication.response.DetailResponse
-import com.example.myapplication.response.ResultsItem
-import com.example.myapplication.response.Sprites
+import com.example.myapplication.data.remote.api.ApiConfig
+import com.example.myapplication.data.remote.response.AbilitiesItem
+import com.example.myapplication.data.remote.response.DetailResponse
+import com.example.myapplication.data.remote.response.Sprites
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -34,7 +35,7 @@ class DetailViewModel: ViewModel() {
             }
 
             override fun onFailure(call: Call<DetailResponse>, t: Throwable) {
-                TODO("Not yet implemented")
+                t.message?.let { Log.e("DetailViewModel", it) }
             }
         })
     }

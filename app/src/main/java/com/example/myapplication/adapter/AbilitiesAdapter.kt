@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.PokemonItemBinding
-import com.example.myapplication.response.Ability
+import com.example.myapplication.data.remote.response.Ability
 
 class AbilitiesAdapter(private val list:ArrayList<Ability>):
     RecyclerView.Adapter<AbilitiesAdapter.ViewHolder>() {
