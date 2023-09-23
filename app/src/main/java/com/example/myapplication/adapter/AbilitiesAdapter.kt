@@ -3,15 +3,16 @@ package com.example.myapplication.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.databinding.PokemonItemBinding
 import com.example.myapplication.data.remote.response.Ability
+import com.example.myapplication.databinding.PokemonItemBinding
 
-class AbilitiesAdapter(private val list:ArrayList<Ability>):
+class AbilitiesAdapter(private val list: ArrayList<Ability>) :
     RecyclerView.Adapter<AbilitiesAdapter.ViewHolder>() {
-    inner class ViewHolder(private var binding: PokemonItemBinding): RecyclerView.ViewHolder(binding.root){
-        fun itemBind(data: Ability){
+    inner class ViewHolder(private var binding: PokemonItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun itemBind(data: Ability) {
             binding.apply {
-                pokemonName.text=data.name
+                pokemonName.text = data.name
             }
         }
     }

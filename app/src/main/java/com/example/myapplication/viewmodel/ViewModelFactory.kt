@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.di.Injection
 import com.example.myapplication.repository.PokemonRepository
 
-class ViewModelFactory private constructor(private val pokemonRepository: PokemonRepository):
+class ViewModelFactory private constructor(private val pokemonRepository: PokemonRepository) :
     ViewModelProvider.NewInstanceFactory() {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -15,6 +15,7 @@ class ViewModelFactory private constructor(private val pokemonRepository: Pokemo
         }
         throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
     }
+
     companion object {
         @Volatile
         private var instance: ViewModelFactory? = null

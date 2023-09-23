@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.myapplication.data.local.entity.PokemonEntity
 
 @Database(entities = [PokemonEntity::class], version = 1, exportSchema = false)
-abstract class PokemonDatabases: RoomDatabase() {
+abstract class PokemonDatabases : RoomDatabase() {
     abstract fun pokemonDao(): PokemonDAO
 
     companion object {

@@ -53,6 +53,10 @@ class PokemonRepository private constructor(
         return result
     }
 
+    fun searchPokemon(query: String): LiveData<List<PokemonEntity>> {
+        return pokemonDAO.search(query)
+    }
+
     companion object {
         @Volatile
         private var instance: PokemonRepository? = null
