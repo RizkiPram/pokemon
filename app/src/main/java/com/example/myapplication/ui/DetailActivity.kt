@@ -1,11 +1,18 @@
 package com.example.myapplication.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.myapplication.R
+import com.example.myapplication.adapter.AbilitiesAdapter
+import com.example.myapplication.adapter.PokemonAdapter
 import com.example.myapplication.databinding.ActivityDetailBinding
+import com.example.myapplication.response.AbilitiesItem
+import com.example.myapplication.response.Ability
+import com.example.myapplication.response.ResultsItem
 import com.example.myapplication.viewmodel.DetailViewModel
 
 class DetailActivity : AppCompatActivity() {
@@ -26,6 +33,19 @@ class DetailActivity : AppCompatActivity() {
             Glide.with(this)
                 .load(it.frontDefault)
                 .into(binding.imgPokemon)
+        }
+        viewModel.detailPokemonAbilities.observe(this@DetailActivity){
+            setupListPokemonAbilities(it)
+        }
+    }
+    private fun setupListPokemonAbilities(data:List<AbilitiesItem>){
+        val listPokemonAbility = ArrayList<Ability>()
+        data.forEach { listPokemonAbility.add(it.ability) }
+        binding.rvAbilities.apply {
+            val layout= LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
+            val pokemonAdapter = AbilitiesAdapter(listPokemonAbility)
+            layoutManager=layout
+            adapter=pokemonAdapter
         }
     }
     companion object{
